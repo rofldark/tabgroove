@@ -1,0 +1,8 @@
+# local project notes (contain local paths)
+CLAUDE.md
+.claude/
+node_modules/
+*.crx
+*.pem
+*.zip
+.env

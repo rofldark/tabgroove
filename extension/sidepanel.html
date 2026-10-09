@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TabGroove</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="currentColor"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="5" width="4.5" height="14" rx="1.2" fill="currentColor"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2" fill="currentColor"/></symbol>
+      <symbol id="i-open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.9 19.35a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.54 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1.04H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="top">
+    <div class="brand">
+      <img src="icons/icon-48.png" alt="" width="30" height="30">
+      <div>
+        <h1>TabGroove</h1>
+        <div class="slogan" data-i18n="slogan"></div>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="settings-open" class="icon-btn has-dot" type="button">
+        <svg class="ic"><use href="#i-gear"/></svg>
+        <span class="dot" id="gear-dot" hidden></span>
+      </button>
+      <button id="theme" class="icon-btn" type="button">
+        <svg class="ic"><use id="theme-ic" href="#i-moon"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="settings" class="sheet" hidden>
+    <div class="card sheet-card" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+      <div class="sheet-head">
+        <h2 id="settings-title" data-i18n="settings"></h2>
+        <button id="settings-close" class="icon-btn" type="button">
+          <svg class="ic"><use href="#i-close"/></svg>
+        </button>
+      </div>
+
+      <h3 class="set-title" data-i18n="appearance"></h3>
+
+      <section class="set-group">
+        <div class="set-label" data-i18n="themeLabel"></div>
+        <div class="seg wide" id="set-theme" role="group">
+          <button type="button" data-mode="light" data-i18n="modeLight"></button>
+          <button type="button" data-mode="dark" data-i18n="modeDark"></button>
+          <button type="button" data-mode="system" data-i18n="modeSystem"></button>
+        </div>
+      </section>
+
+      <section class="set-group">
+        <label class="set-label" for="language" data-i18n="language"></label>
+        <select id="language"></select>
+      </section>
+
+      <section class="set-group" data-deck="A">
+        <div class="set-label"><span class="deck-tag a">A</span><span data-i18n="colorA"></span></div>
+        <div class="swatches"></div>
+        <div class="custom-row">
+          <label class="picker"><input type="color" aria-label="Deck A"><span data-i18n="custom"></span></label>
+          <button class="btn small reset" type="button" data-i18n="reset"></button>
+        </div>
+      </section>
+
+      <section class="set-group" data-deck="B">
+        <div class="set-label"><span class="deck-tag b">B</span><span data-i18n="colorB"></span></div>
+        <div class="swatches"></div>
+        <div class="custom-row">
+          <label class="picker"><input type="color" aria-label="Deck B"><span data-i18n="custom"></span></label>
+          <button class="btn small reset" type="button" data-i18n="reset"></button>
+        </div>
+      </section>
+
+      <h3 class="set-title" data-i18n="playback"></h3>
+
+      <section class="set-group">
+        <label class="switch">
+          <input id="set-pause-out" type="checkbox">
+          <span class="track"></span>
+          <span data-i18n="pauseOut"></span>
+        </label>
+        <label class="switch">
+          <input id="set-normalize" type="checkbox">
+          <span class="track"></span>
+          <span data-i18n="normalize"></span>
+        </label>
+        <div class="set-label sub" data-i18n="outro"></div>
+        <div class="seg wide" id="set-outro" role="group">
+          <button type="button" data-sec="0">0 s</button>
+          <button type="button" data-sec="5">5 s</button>
+          <button type="button" data-sec="10">10 s</button>
+          <button type="button" data-sec="20">20 s</button>
+          <button type="button" data-sec="30">30 s</button>
+        </div>
+      </section>
+
+      <div class="sheet-actions">
+        <button id="settings-cancel" class="btn" type="button" data-i18n="cancel"></button>
+        <button id="settings-save" class="btn solid" type="button" data-i18n="save"></button>
+      </div>
+
+      <h3 class="set-title" data-i18n="about"></h3>
+
+      <section class="set-group about">
+        <p class="free-note" data-i18n="freeNote"></p>
+        <div class="about-row">
+          <button id="news-open" class="btn small" type="button"><span data-i18n="whatsNew"></span><span class="dot" id="news-dot" hidden></span></button>
+          <button id="guide-open" class="btn small" type="button" data-i18n="guide"></button>
+        </div>
+        <div class="about-row" id="links" hidden>
+          <a id="link-repo" class="btn small" target="_blank" rel="noopener">GitHub</a>
+          <a id="link-issues" class="btn small" target="_blank" rel="noopener" data-i18n="report"></a>
+        </div>
+        <button id="reset-all" class="btn small danger" type="button" data-i18n="resetAll"></button>
+        <div class="version" id="version"></div>
+      </section>
+    </div>
+  </div>
+
+  <div id="guide" class="sheet top-sheet" hidden>
+    <div class="card sheet-card" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+      <div class="guide-head">
+        <img src="icons/icon-128.png" alt="" width="56" height="56">
+        <h2 id="guide-title" data-i18n="guideTitle"></h2>
+      </div>
+      <ol class="steps">
+        <li><span class="step-no">1</span><span data-i18n="guide1"></span></li>
+        <li><span class="step-no">2</span><span data-i18n="guide2"></span></li>
+        <li><span class="step-no">3</span><span data-i18n="guide3"></span></li>
+      </ol>
+      <button id="guide-close" class="btn solid" type="button" data-i18n="gotIt"></button>
+    </div>
+  </div>
+
+  <div id="news" class="sheet top-sheet" hidden>
+    <div class="card sheet-card" role="dialog" aria-modal="true" aria-labelledby="news-title">
+      <div class="sheet-head">
+        <h2 id="news-title"></h2>
+        <button id="news-close" class="icon-btn" type="button">
+          <svg class="ic"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <ul class="news-list" id="news-list"></ul>
+    </div>
+  </div>
+
+  <main>
+    <section class="decks" id="decks"></section>
+
+    <section class="card mixer">
+      <div class="fader-row">
+        <span class="deck-tag a">A</span>
+        <input id="fader" type="range" min="0" max="1000" value="0" aria-label="Crossfader">
+        <span class="deck-tag b">B</span>
+      </div>
+
+      <div class="fade-row">
+        <button id="fade-a" class="btn primary a" type="button">
+          <svg class="ic"><use href="#i-left"/></svg><span data-i18n="fadeToA"></span>
+        </button>
+        <button id="fade-b" class="btn primary b" type="button">
+          <span data-i18n="fadeToB"></span><svg class="ic"><use href="#i-right"/></svg>
+        </button>
+      </div>
+
+      <div class="opt-row">
+        <span class="opt-label" data-i18n="duration"></span>
+        <div class="seg" id="duration" role="group">
+          <button type="button" data-sec="4">4 s</button>
+          <button type="button" data-sec="8">8 s</button>
+          <button type="button" data-sec="12">12 s</button>
+          <button type="button" data-sec="16">16 s</button>
+        </div>
+      </div>
+
+      <div class="opt-row">
+        <label class="switch">
+          <input id="auto-mix" type="checkbox">
+          <span class="track"></span>
+          <span data-i18n="autoMix"></span>
+        </label>
+      </div>
+
+      <div class="opt-row">
+        <span class="opt-label" data-i18n="master"></span>
+        <input id="master" class="master" type="range" min="0" max="100" value="100" aria-label="Master">
+      </div>
+    </section>
+
+    <p id="hint" class="hint" data-i18n="hint"></p>
+  </main>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>
