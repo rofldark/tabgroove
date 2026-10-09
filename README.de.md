@@ -127,7 +127,7 @@ Auf das Zahnrad klicken. Änderungen siehst du sofort als Vorschau, **Speichern*
 
 ## Datenschutz und Berechtigungen
 
-TabGroove hat **keine Server, keine Analyse und kein Tracking**. Nichts von dem, was du tust oder hörst, verlässt deinen Browser. Einstellungen speichert Chrome lokal.
+TabGroove hat **keine Server, keine Analyse und kein Tracking**. Es erhebt und sendet keine Daten über dich oder das, was du hörst. Einstellungen speichert Chrome lokal. Die einzigen Netzwerkanfragen des Seitenpanels sind die Vorschaubilder der Videos, geladen von YouTubes Bildserver – dieselben Bilder, die YouTube dir sowieso zeigt. Details: [Datenschutzerklärung](PRIVACY.md#datenschutzerklärung--tabgroove).
 
 | Berechtigung | Wofür sie nötig ist |
 |---|---|

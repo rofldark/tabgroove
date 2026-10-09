@@ -127,7 +127,7 @@ Click the gear button. Changes are previewed right away and kept with **Save**.
 
 ## Privacy and permissions
 
-TabGroove has **no servers, no analytics and no tracking**. Nothing you do or listen to leaves your browser. Settings are stored locally by Chrome.
+TabGroove has **no servers, no analytics and no tracking**. It does not collect or send any data about you or what you listen to. Settings are stored locally by Chrome. The only network requests of the side panel are the video thumbnails, loaded from YouTube's image server – the same images YouTube shows you anyway. Details: [Privacy policy](PRIVACY.md).
 
 | Permission | Why it is needed |
 |---|---|
